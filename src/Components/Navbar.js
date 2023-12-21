@@ -5,17 +5,18 @@ import {
   faMagnifyingGlass,
 } from '@fortawesome/free-solid-svg-icons';
 
-class Navbar extends React.Component {
-  render() {
-    return (
-      <div>
+import logo from '../Assets/Images/Logo.png'
+
+export default function Navbar(props) {
+  return (
+    <div>
         <nav className="nav">
           <div className="left-div">
-            {/* <img
-              src="https://ninjasfiles.s3.amazonaws.com/0000000000003454.png"
+            <img
+              src={logo}
               alt="logo"
-            /> */}
-            <span className='logo'>ChatCell</span>
+              className='site-logo'
+            />
           </div>
           <div className="search-container">
             <FontAwesomeIcon className="search-icon" icon={faMagnifyingGlass} />
@@ -58,8 +59,5 @@ class Navbar extends React.Component {
           </div>
         </nav>
       </div>
-    );
-  }
+  );
 }
-
-export default Navbar;

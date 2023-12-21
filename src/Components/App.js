@@ -2,9 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { fetchPosts } from '../Actions/posts';
-import PostsList from './PostsList';
 import PropTypes from 'prop-types';
-import Navbar from './Navbar';
+import { PostsList, Navbar } from './';
+import { Outlet } from 'react-router-dom';
 
 class App extends React.Component {
   componentDidMount() {
@@ -14,10 +14,11 @@ class App extends React.Component {
   render() {
     const { posts } = this.props;
     return (
-      <div>
-        <Navbar/>
-        <PostsList posts={posts} />
-      </div>
+      <>
+        <Navbar />
+        {/* <PostsList posts={posts} /> */}
+        <Outlet />
+      </>
     );
   }
 }
