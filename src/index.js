@@ -11,18 +11,20 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from 'react-router-dom';
-import { ErrorPage, Home, Navbar, Login } from './Components';
-
-const SignUp = () => <div>Sign Up</div>;
+import { ErrorPage, Home, Navbar, Login, SignUp } from './Components';
+import { action as loginAction } from './Components/Login';
+import { action as signUpAction } from './Components/SignUp';
 
 const store = configStore();
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />} errorElement={<ErrorPage />}>
       <Route path="/" element={<Navbar />}>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />,
-        <Route path="/signup" element={<SignUp />} />,
+        <Route errorElement={<ErrorPage />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} action={loginAction} />,
+          <Route path="/signup" element={<SignUp />} action={signUpAction} />,
+        </Route>
       </Route>
     </Route>
   )

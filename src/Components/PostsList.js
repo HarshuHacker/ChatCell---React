@@ -1,16 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faUserAstronaut,
   faHeart,
   faMessage,
 } from '@fortawesome/free-solid-svg-icons';
-import { connect } from 'react-redux';
 
 class PostsList extends React.Component {
   render() {
-    let { posts } = this.props;
+    const { posts } = this.props;
     return (
       <div className="posts-list">
         {posts.map((post) => (
