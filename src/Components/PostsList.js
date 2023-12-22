@@ -6,6 +6,7 @@ import {
   faHeart,
   faMessage,
 } from '@fortawesome/free-solid-svg-icons';
+import { connect } from 'react-redux';
 
 class PostsList extends React.Component {
   render() {
@@ -61,8 +62,14 @@ class PostsList extends React.Component {
   }
 }
 
+function mapStateToProps(state) {
+  return {
+    posts: state.posts,
+  };
+}
+
 PostsList.propTypes = {
   posts: PropTypes.array.isRequired,
 };
 
-export default PostsList;
+export default connect(mapStateToProps)(PostsList);

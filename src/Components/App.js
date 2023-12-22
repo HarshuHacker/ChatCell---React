@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 
 import { fetchPosts } from '../Actions/posts';
 import PropTypes from 'prop-types';
-import { PostsList, Navbar } from './';
 import { Outlet } from 'react-router-dom';
 
 class App extends React.Component {
@@ -12,11 +11,8 @@ class App extends React.Component {
   }
 
   render() {
-    const { posts } = this.props;
     return (
       <>
-        <Navbar />
-        {/* <PostsList posts={posts} /> */}
         <Outlet />
       </>
     );

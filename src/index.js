@@ -6,44 +6,20 @@ import './Assets/Styles/index.css';
 import App from './Components/App';
 import configStore from './Store';
 import {
-  Link,
-  Outlet,
   Route,
   RouterProvider,
   createBrowserRouter,
   createRoutesFromElements,
 } from 'react-router-dom';
-
-const Login = () => <div>Login</div>;
+import { ErrorPage, Home, Navbar, Login } from './Components';
 
 const SignUp = () => <div>Sign Up</div>;
-
-const Home = () => <div>Home</div>;
-
-const SecondApp = () => {
-  return (
-    <>
-      <ul>
-        <li>
-          <Link to={'/'}>Home</Link>
-        </li>
-        <li>
-          <Link to={'/login'}>Login</Link>
-        </li>
-        <li>
-          <Link to={'/signup'}>Sign Up</Link>
-        </li>
-      </ul>
-      <Outlet />
-    </>
-  );
-};
 
 const store = configStore();
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<App />}>
-      <Route path="/" element={<SecondApp />}>
+    <Route path="/" element={<App />} errorElement={<ErrorPage />}>
+      <Route path="/" element={<Navbar />}>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />,
         <Route path="/signup" element={<SignUp />} />,
@@ -54,9 +30,9 @@ const router = createBrowserRouter(
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <RouterProvider router={router} />
-    </Provider>
-  </React.StrictMode>
+  // <React.StrictMode>
+  <Provider store={store}>
+    <RouterProvider router={router} />
+  </Provider>
+  // </React.StrictMode>
 );
