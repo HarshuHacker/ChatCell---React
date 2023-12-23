@@ -61,6 +61,8 @@ class Navbar extends React.Component {
               </div>
             )}
 
+            <Link style={{color: 'white'}} to={'/setting'}> Setting </Link>
+
             <div className="nav-links">
               <ul>
                 {!auth.isLoggedin && (
